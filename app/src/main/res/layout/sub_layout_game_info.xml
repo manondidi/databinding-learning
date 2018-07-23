@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?><layout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    android:orientation="vertical"
+    android:paddingBottom="20dp"
+    android:tag="layout/sub_layout_game_info_0">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp">
+
+        <ImageView
+            android:id="@+id/ivBigCover"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:background="#000000"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/default_screenshot" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/pc_mask" />
+
+        <TextView
+            android:id="@+id/tvGameName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="140dp"
+            android:text="闪之轨迹"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/platformContain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvGameName"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:src="@mipmap/ps2" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:src="@mipmap/ps2" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:src="@mipmap/ps2" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:src="@mipmap/ps2" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                android:src="@mipmap/ps2" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvGameType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/platformContain"
+            android:layout_alignTop="@id/platformContain"
+            android:layout_toRightOf="@id/platformContain"
+            android:gravity="center|left"
+            android:text="RPG"
+            android:textColor="#666666"
+            android:textSize="10dp" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@id/tvGameName"
+            android:layout_marginRight="12dp"
+            android:tag="binding_1">
+
+            <include
+                android:id="@+id/sublayoutDeservePercent"
+                layout="@layout/sub_layout_deserve_percent" />
+        </FrameLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvPlatform"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="5dp"
+        android:text="游戏平台: PC"
+        android:textColor="#666666"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tvCompany"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="14dp"
+        android:text="游戏厂商: 腾讯"
+        android:textColor="#666666"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tvLang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="14dp"
+        android:text="支持语言: 中文"
+        android:textColor="#666666"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tvType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="14dp"
+        android:text="游戏类型: MOBA"
+        android:textColor="#666666"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tvTag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="14dp"
+        android:text="游戏标签: MOBA、小鲜肉"
+        android:textColor="#666666"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tvScreenshots"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="14dp"
+        android:text="游戏截图:"
+        android:textColor="#666666"
+        android:textSize="14dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcScreenshots"
+        android:layout_width="match_parent"
+        android:layout_height="121dp"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="14dp"
+        android:text="游戏简介:"
+        android:textColor="#666666"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="14dp"
+        android:minLines="3"
+        android:text="我们拥有5V5经典地图，使用三路推塔核心玩法，呈现出最原滋原味的MOBA游戏对战体验！在王者荣耀里，我们根据英雄玩法使用不同的策略，根据英雄特色组建完美阵容，默契配合成就最强王者！我们拥有5V5经典地图，使用三路推塔核心玩法，呈现出最原滋原味的MOBA游戏对战体验！在王者荣耀里，我们根据英雄玩法使用不同的策略，根据英雄特色组建完美阵容，默契配合成就最强王者！我们拥有5V5经典地图，使用三路推塔核心玩法，呈现出最原滋原味的MOBA游戏对战体验！在王者荣耀里，我们根据英雄玩法使用不同的策略，根据英雄特色组建完美阵容，默契配合成就最强王者！我们拥有5V5经典地图，使用三路推塔核心玩法，呈现出最原滋原味的MOBA游戏对战体验！在王者荣耀里，我们根据英雄玩法使用不同的策略，根据英雄特色组建完美阵容，默契配合成就最强王者！我们拥有5V5经典地图，使用三路推塔核心玩法，呈现出最原滋原味的MOBA游戏对战体验！在王者荣耀里，我们根据英雄玩法使用不同的策略，根据英雄特色组建完美阵容，默契配合成就最强王者！我们拥有5V5经典地图，使用三路推塔核心玩法，呈现出最原滋原味的MOBA游戏对战体验！在王者荣耀里，我们根据英雄玩法使用不同的策略，根据英雄特色组建完美阵容，默契配合成就最强王者！我们拥有5V5经典地图，使用三路推塔核心玩法，呈现出最原滋原味的MOBA游戏对战体验！在王者荣耀里，我们根据英雄玩法使用不同的策略，根据英雄特色组建完美阵容，默契配合成就最强王者！我们拥有5V5经典地图，使用三路推塔核心玩法，呈现出最原滋原味的MOBA游戏对战体验！在王者荣耀里，我们根据英雄玩法使用不同的策略，根据英雄特色组建完美阵容，默契配合成就最强王者！我们拥有5V5经典地图，使用三路推塔核心玩法，呈现出最原滋原味的MOBA游戏对战体验！在王者荣耀里，我们根据英雄玩法使用不同的策略，根据英雄特色组建完美阵容，默契配合成就最强王者！我们拥有5V5经典地图，使用三路推塔核心玩法，呈现出最原滋原味的MOBA游戏对战体验！在王者荣耀里，我们根据英雄玩法使用不同的策略，根据英雄特色组建完美阵容，默契配合成就最强王者！"
+        android:textColor="#666666"
+        android:textSize="14dp" />
+</LinearLayout>
+</layout>

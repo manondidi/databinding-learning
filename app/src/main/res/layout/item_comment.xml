@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:tag="layout/item_comment_0">
+
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:src="@mipmap/share_savepoint"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="5dp"
+            android:text="nick"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            app:layout_constraintStart_toEndOf="@id/ivAvatar"
+            app:layout_constraintTop_toTopOf="@id/ivAvatar" />
+
+        <TextView
+            android:id="@+id/tvPlayTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="玩过 | 10小时,1小时前"
+            android:textColor="#aaaaaa"
+            android:textSize="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
+            app:layout_constraintStart_toStartOf="@id/tvNick" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ivAvatar">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/praise_normal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="2"
+                android:textColor="#aaaaaa"
+                android:textSize="8dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="62dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="9dp"
+            android:minLines="3"
+            android:text="为什么笔记本电池容量才4k毫安呢。我是说塞下一块大的应该不难吧 求科普为什么笔记本电池容量才4k毫安呢。我是说塞下一块大的应该不难吧 求科普为什么笔记本电池容量才4k毫安呢。我是说塞下一块大的应该不难吧 求科普为什么笔记本电池容量才4k毫安呢。我是说塞下一块大的应该不难吧 求科普为什么笔记本电池容量才4k毫安呢。我是说塞下一块大的应该不难吧 求科普"
+            android:textColor="#000000"
+            android:textSize="12dp"
+            app:layout_constraintTop_toBottomOf="@id/ivAvatar" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#f3f3f3"
+            app:layout_constraintTop_toBottomOf="@id/tvComment" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

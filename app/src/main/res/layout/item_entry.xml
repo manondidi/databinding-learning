@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?><layout>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="98dp"
+    android:background="#ffffff"
+    android:tag="layout/item_entry_0">
+
+    <ImageView
+        android:id="@+id/cardContain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/bg_card" />
+
+    <ImageView
+        android:id="@+id/ivCard"
+        android:layout_width="42dp"
+        android:layout_height="48dp"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/jin" />
+
+    <ImageView
+        android:id="@+id/ivCardMask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@mipmap/card_mask" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/cardContain"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:text="黄金"
+        android:textColor="#ffffff"
+        android:textSize="12dp" />
+
+    <ImageView
+        android:id="@+id/ivRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="-10dp"
+        android:layout_toLeftOf="@id/cardContain"
+        android:scaleType="fitXY"
+        android:src="@mipmap/bg_record" />
+
+    <TextView
+        android:id="@+id/tvRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/ivRecord"
+        android:layout_alignRight="@id/ivRecord"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="我的履历"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
+
+    <ImageView
+        android:id="@+id/ivCommunity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginRight="12dp"
+        android:layout_toRightOf="@id/cardContain"
+        android:scaleType="fitXY"
+        android:src="@mipmap/bg_community" />
+
+    <TextView
+        android:id="@+id/tvCommunity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/ivCommunity"
+        android:layout_alignRight="@id/ivCommunity"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="玩家社区"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_alignParentBottom="true"
+        android:background="#f3f3f3" />
+</RelativeLayout>
+</layout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <merge xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_play_status"
+            android:tag="layout/sub_layout_play_status_0"
+            android:text="想玩"
+            android:textColor="#5c51cb" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginRight="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_play_status"
+            android:tag="layout/sub_layout_play_status_1"
+            android:text="喜+1"
+            android:textColor="#5c51cb" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_play_status"
+            android:tag="layout/sub_layout_play_status_2"
+            android:text="在玩"
+            android:textColor="#5c51cb" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_play_status"
+            android:tag="layout/sub_layout_play_status_3"
+            android:text="玩过"
+            android:textColor="#5c51cb" />
+    </merge>
+</layout>
