@@ -22,18 +22,18 @@ public class PlayStatusItemBinder
     }
 
     @NonNull
-    protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater paramLayoutInflater, @NonNull ViewGroup paramViewGroup) {
+    protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup viewGroup) {
 
-        return new ViewHolder(DataBindingUtil.inflate(paramLayoutInflater, R.layout.item_play_status, paramViewGroup, false));
+        return new ViewHolder(DataBindingUtil.inflate(inflater, R.layout.item_play_status, viewGroup, false));
     }
 
     static class ViewHolder
             extends RecyclerView.ViewHolder {
         ItemPlayStatusBinding binding;
 
-        ViewHolder(ItemPlayStatusBinding paramItemPlayStatusBinding) {
-            super(paramItemPlayStatusBinding.getRoot());
-            this.binding = paramItemPlayStatusBinding;
+        ViewHolder(ItemPlayStatusBinding b) {
+            super(b.getRoot());
+            this.binding = b;
             this.binding.ivDropDown.setOnClickListener(v -> {
                 EventBus.getDefault().post(new BusAction.HideCommentRecyclerViewEvent());
             });

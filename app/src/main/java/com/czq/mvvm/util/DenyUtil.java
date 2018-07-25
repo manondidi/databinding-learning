@@ -3,13 +3,13 @@ package com.czq.mvvm.util;
 import android.content.Context;
 
 public class DenyUtil {
-    public static int dip2px(Context paramContext, int paramInt) {
-        float f = paramContext.getResources().getDisplayMetrics().density;
-        return (int) (paramInt * f + 0.5D);
+    public static int dip2px(Context context, int dp) {
+        float f = context.getResources().getDisplayMetrics().density;
+        return (int) (dp * f + 0.5D);
     }
 
-    public static int px2dip(Context paramContext, int paramInt) {
-        float f = paramContext.getResources().getDisplayMetrics().density;
-        return (int) (paramInt / f + 0.5F);
+    public static int px2dip(Context context, int px) {
+        float f = context.getResources().getDisplayMetrics().density;
+        return (int) (px / f + 0.5F);
     }
 }

@@ -22,6 +22,8 @@ import com.czq.mvvm.ItemBinder.RecordTotalItemBinder;
 import com.czq.mvvm.ItemBinder.ScreenshotBinder;
 import com.czq.mvvm.busEvent.BusAction;
 import com.czq.mvvm.databinding.ActivityGameDetailBinding;
+import com.czq.mvvm.model.GameDetailVm;
+import com.czq.mvvm.model.Screenshot;
 import com.czq.mvvm.util.DenyUtil;
 import com.czq.mvvm.viewModel.CommentItemVm;
 import com.czq.mvvm.viewModel.EmptyTransparentItemVm;
@@ -46,19 +48,23 @@ import me.everything.android.ui.overscroll.VerticalOverScrollBounceEffectDecorat
 import me.everything.android.ui.overscroll.adapters.RecyclerViewOverScrollDecorAdapter;
 
 public class GameDetailActivity
-        extends AppCompatActivity {
+        extends AppCompatActivity implements GameDetailContact.IGameDetailView {
     private ActivityGameDetailBinding binding;
     private MultiTypeAdapter commmentAdapter = new MultiTypeAdapter();
     List dataSource = new ArrayList();
     private ImmersionBar mImmersionBar;
     List screenshots = new ArrayList();
     private MultiTypeAdapter screenshotsAdapter = new MultiTypeAdapter();
+    private GameDetailVm mGameDetailVm;
+    private GameDetailPresenter mPresenter;
 
-    private int getScollYDistance() {
-        Object localObject = (LinearLayoutManager) binding.rcComment.getLayoutManager();
-        int i = ((LinearLayoutManager) localObject).findFirstVisibleItemPosition();
-        localObject = ((LinearLayoutManager) localObject).findViewByPosition(i);
-        return DenyUtil.px2dip(this, i * ((View) localObject).getHeight() - ((View) localObject).getTop());
+
+    protected void onCreate(Bundle paramBundle) {
+        super.onCreate(paramBundle);
+        mPresenter = new GameDetailPresenter(this, new MockService(this));
+        binding = ((ActivityGameDetailBinding) DataBindingUtil.setContentView(this, R.layout.activity_game_detail));
+        initView();
+        mPresenter.start();
     }
 
     private void initView() {
@@ -73,7 +79,7 @@ public class GameDetailActivity
         commmentAdapter.register(RecordTotalItemVm.class, new RecordTotalItemBinder());
         binding.subViewGameInfo.rcScreenshots.setAdapter(screenshotsAdapter);
         binding.subViewGameInfo.rcScreenshots.setLayoutManager(new LinearLayoutManager(this, 0, false));
-        screenshotsAdapter.register(ScreenshotVm.class, new ScreenshotBinder());
+        screenshotsAdapter.register(Screenshot.class, new ScreenshotBinder());
         binding.rcComment.addOnScrollListener(new RecyclerView.OnScrollListener() {
             public void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt) {
                 super.onScrollStateChanged(paramAnonymousRecyclerView, paramAnonymousInt);
@@ -104,37 +110,13 @@ public class GameDetailActivity
     }
 
     private void loadData() {
-        dataSource.add(new EmptyTransparentItemVm());
-        dataSource.add(new PlayStatusItemVm());
-        dataSource.add(new EntryItemVm());
-        dataSource.add(new RecordTotalItemVm());
-        int j = 0;
-        int i = 0;
-        while (i < 20) {
-            dataSource.add(new CommentItemVm());
-            i += 1;
-        }
-        commmentAdapter.setItems(dataSource);
-        commmentAdapter.notifyDataSetChanged();
-        i = j;
-        while (i < 20) {
-            screenshots.add(new ScreenshotVm());
-            i += 1;
-        }
-        screenshotsAdapter.setItems(screenshots);
-        screenshotsAdapter.notifyDataSetChanged();
         Glide.with(this).load(R.mipmap.default_screenshot).apply(RequestOptions.bitmapTransform(new BlurTransformation(25, 3))).into(binding.ivToolbar);
     }
 
-    protected void onCreate(Bundle paramBundle) {
-        super.onCreate(paramBundle);
-        binding = ((ActivityGameDetailBinding) DataBindingUtil.setContentView(this, R.layout.activity_game_detail));
-        initView();
-        loadData();
-    }
 
     protected void onDestroy() {
         super.onDestroy();
+        mPresenter = null;
         if (mImmersionBar != null) {
             mImmersionBar.destroy();
         }
@@ -176,6 +158,22 @@ public class GameDetailActivity
         animator.start();
     }
 
+
+    public void showCommentRecyclerView(View paramView) {
+        binding.rcComment.setVisibility(View.VISIBLE);
+        binding.rcComment.smoothScrollToPosition(0);
+        binding.scrollView.smoothScrollTo(0, 0);
+        (new SpringAnimation(binding.rcComment, DynamicAnimation.TRANSLATION_Y, 0.0F).setSpring(new SpringForce(0.0F).setDampingRatio(0.75F).setStiffness(200.0F)).setStartValue(getResources().getDisplayMetrics().heightPixels)).setStartVelocity(100.0F).start();
+    }
+
+    private int getScollYDistance() {
+        LinearLayoutManager linearLayoutManager = (LinearLayoutManager) binding.rcComment.getLayoutManager();
+        int position = linearLayoutManager.findFirstVisibleItemPosition();
+        View firstVisiableChildView = linearLayoutManager.findViewByPosition(position);
+        int itemHeight = firstVisiableChildView.getHeight();
+        return DenyUtil.px2dip(this, (position) * itemHeight - firstVisiableChildView.getTop());
+    }
+
     protected void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
@@ -186,10 +184,15 @@ public class GameDetailActivity
         EventBus.getDefault().unregister(this);
     }
 
-    public void showCommentRecyclerView(View paramView) {
-        binding.rcComment.setVisibility(View.VISIBLE);
-        binding.rcComment.smoothScrollToPosition(0);
-        binding.scrollView.smoothScrollTo(0, 0);
-        (new SpringAnimation(binding.rcComment, DynamicAnimation.TRANSLATION_Y, 0.0F).setSpring(new SpringForce(0.0F).setDampingRatio(0.75F).setStiffness(200.0F)).setStartValue(getResources().getDisplayMetrics().heightPixels)).setStartVelocity(100.0F).start();
+    @Override
+    public void setGameDetailVm(GameDetailVm gameDetailVm) {
+        mGameDetailVm = gameDetailVm;
+        dataSource = gameDetailVm.datasource;
+        commmentAdapter.setItems(dataSource);
+        commmentAdapter.notifyDataSetChanged();
+
+        screenshotsAdapter.setItems(gameDetailVm.screenshotVm.screenshots);
+        screenshotsAdapter.notifyDataSetChanged();
+
     }
 }

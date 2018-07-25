@@ -19,14 +19,14 @@ public class EntryItemBinder
 
     @SuppressLint("ResourceType")
     @NonNull
-    protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater paramLayoutInflater, @NonNull ViewGroup paramViewGroup) {
-        return new ViewHolder(paramLayoutInflater.inflate(R.layout.item_entry, paramViewGroup, false));
+    protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup viewGroup) {
+        return new ViewHolder(inflater.inflate(R.layout.item_entry, viewGroup, false));
     }
 
     static class ViewHolder
             extends RecyclerView.ViewHolder {
-        ViewHolder(@NonNull View paramView) {
-            super(paramView);
+        ViewHolder(@NonNull View view) {
+            super(view);
         }
     }
 }
