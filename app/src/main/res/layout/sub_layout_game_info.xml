@@ -47,6 +47,7 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
+
             <LinearLayout
                 android:id="@+id/platformContain"
                 android:layout_width="wrap_content"
@@ -54,38 +55,10 @@
                 android:layout_below="@id/tvGameName"
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                app:platformIcon="@{gameInfo.platforms}"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:src="@mipmap/ps2" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:src="@mipmap/ps2" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:src="@mipmap/ps2" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:src="@mipmap/ps2" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:src="@mipmap/ps2" />
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvGameType"
@@ -95,7 +68,7 @@
                 android:layout_alignTop="@id/platformContain"
                 android:layout_toRightOf="@id/platformContain"
                 android:gravity="center|left"
-                android:text="RPG"
+                android:text="@{gameInfo.type}"
                 android:textColor="#666666"
                 android:textSize="10dp" />
 

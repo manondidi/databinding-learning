@@ -42,4 +42,9 @@ public class ImageViewBindingAdapter {
                         new CenterCrop())))
                 .into(imageView);
     }
+
+    @BindingAdapter({"imgResId"})
+    public static void setImageResId(ImageView imageView, int resId) {
+        imageView.setImageResource(resId);
+    }
 }
