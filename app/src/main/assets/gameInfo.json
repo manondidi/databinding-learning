@@ -3563,10 +3563,10 @@
     "即时"
   ],
   "playTimeRange": null,
-  "playStatus": "unset",
+  "playStatus": "played",
   "deserve": null,
   "startPlayingAt": null,
-  "reviewContent": "",
+  "reviewContent": "塞尔达天下第一",
   "recordId": null,
   "recordCreateTime": null,
   "recordLikeCount": 0,

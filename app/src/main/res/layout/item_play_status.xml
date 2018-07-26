@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.czq.mvvm.viewModel.PlayStatusItemVm" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:tag="layout/item_play_status_0">
@@ -49,19 +57,22 @@
             android:layout_marginRight="12dp"
             android:layout_marginTop="52dp">
 
-            <LinearLayout
+            <FrameLayout
                 android:id="@+id/btnContain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
                 android:layout_marginRight="12dp"
                 android:layout_marginTop="40dp"
-                android:orientation="horizontal"
-                android:weightSum="4"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <include layout="@layout/sub_layout_play_status" />
-            </LinearLayout>
+
+                <include
+                    android:id="@+id/subLayoutPlayStatus"
+                    layout="@layout/sub_layout_play_status"
+                    bind:viewModel="@{viewModel}" />
+            </FrameLayout>
+
 
             <TextView
                 android:layout_width="match_parent"
@@ -71,7 +82,8 @@
                 android:layout_marginRight="12dp"
                 android:layout_marginTop="18dp"
                 android:background="#f3f3f3"
-                android:minHeight="85dp"
+                android:minHeight="60dp"
+                android:text="@{viewModel.content}"
                 android:paddingBottom="12dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -105,9 +117,9 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="2dp"
             android:layout_marginTop="3dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:padding="10dp"
-            android:gravity="center"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/statusContain">
 

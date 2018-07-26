@@ -17,8 +17,10 @@ import me.drakeet.multitype.ItemViewBinder;
 
 public class PlayStatusItemBinder
         extends ItemViewBinder<PlayStatusItemVm, PlayStatusItemBinder.ViewHolder> {
-    protected void onBindViewHolder(@NonNull ViewHolder paramViewHolder, @NonNull PlayStatusItemVm paramPlayStatusItemVm) {
-        paramViewHolder.binding.executePendingBindings();
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull PlayStatusItemVm playStatusItemVm) {
+
+        holder.binding.setViewModel(playStatusItemVm);
+        holder.binding.executePendingBindings();
     }
 
     @NonNull
