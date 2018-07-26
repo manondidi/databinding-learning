@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:tag="layout/item_screenshot_0"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageView
-        android:id="@+id/ivSceenshot"
-        android:layout_width="216dp"
-        android:layout_height="122dp"
-        android:layout_marginLeft="8dp"
-        android:src="@mipmap/default_screenshot"
-        android:scaleType="centerCrop" />
-</FrameLayout>
+    <data>
+
+        <variable
+            name="screenshot"
+            type="com.czq.mvvm.model.Screenshot" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:tag="layout/item_screenshot_0">
+
+        <ImageView
+            android:id="@+id/ivSceenshot"
+            android:layout_width="216dp"
+            android:layout_height="122dp"
+            android:layout_marginLeft="8dp"
+            android:scaleType="centerCrop"
+            app:imgUrl-corners="@{screenshot.url}"
+            app:corner="@{5}"/>
+    </FrameLayout>
 </layout>

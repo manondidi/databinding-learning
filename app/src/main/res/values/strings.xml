@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">mvvm</string>
+    <string name="game_platform">游戏平台:&#160; </string>
+    <string name="game_company">游戏厂商:&#160;  </string>
+    <string name="game_language">支持语言:&#160; </string>
+    <string name="game_type">游戏类型:&#160; </string>
+    <string name="game_tag">游戏标签:&#160; </string>
 </resources>

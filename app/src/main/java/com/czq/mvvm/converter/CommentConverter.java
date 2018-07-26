@@ -61,7 +61,7 @@ public class CommentConverter {
         if (comment.deserve == null) {
             commentItemVm.commentContent = new SpannableString(comment.content);
         } else {
-            String deserveStr = comment.deserve == 1 ? "值得玩  | " : "不值得玩 |  ";
+            String deserveStr = comment.deserve == 1 ? "值得玩  |  " : "不值得玩 |   ";
             ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.parseColor(comment.deserve == 1 ? "#f39a00" : "#aaaaaa"));
             commentItemVm.commentContent = new SpannableString(deserveStr + comment.content);
             commentItemVm.commentContent.setSpan(colorSpan, 0, deserveStr.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);

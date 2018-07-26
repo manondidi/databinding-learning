@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <data>
+
+        <variable
+            name="gameDetailVm"
+            type="com.czq.mvvm.model.GameDetailVm" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:tag="layout/activity_game_detail_0">
+        android:background="#000000">
 
         <ScrollView
             android:id="@+id/scrollView"
@@ -15,7 +23,10 @@
 
             <include
                 android:id="@+id/subViewGameInfo"
-                layout="@layout/sub_layout_game_info" />
+                layout="@layout/sub_layout_game_info"
+                bind:gameInfo="@{gameDetailVm.gameInfo}"
+
+                />
         </ScrollView>
 
         <ImageView
@@ -62,10 +73,11 @@
                 <TextView
                     android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
                     android:gravity="center"
-                    android:text="游戏名称"
+                    android:layout_marginTop="10dp"
+                    android:text="@{gameDetailVm.gameInfo.title}"
                     android:textColor="#ffffff"
                     android:textSize="16dp" />
             </RelativeLayout>

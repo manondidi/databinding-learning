@@ -16,12 +16,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.czq.mvvm.ItemBinder.CommentItemBinder;
 import com.czq.mvvm.ItemBinder.EmptyTransparentItemBinder;
+import com.czq.mvvm.databinding.ActivityGameDetailBinding;
 import com.czq.mvvm.ItemBinder.EntryItemBinder;
 import com.czq.mvvm.ItemBinder.PlayStatusItemBinder;
 import com.czq.mvvm.ItemBinder.RecordTotalItemBinder;
 import com.czq.mvvm.ItemBinder.ScreenshotBinder;
 import com.czq.mvvm.busEvent.BusAction;
-import com.czq.mvvm.databinding.ActivityGameDetailBinding;
 import com.czq.mvvm.model.GameDetailVm;
 import com.czq.mvvm.model.Screenshot;
 import com.czq.mvvm.util.DenyUtil;
@@ -30,7 +30,6 @@ import com.czq.mvvm.viewModel.EmptyTransparentItemVm;
 import com.czq.mvvm.viewModel.EntryItemVm;
 import com.czq.mvvm.viewModel.PlayStatusItemVm;
 import com.czq.mvvm.viewModel.RecordTotalItemVm;
-import com.czq.mvvm.viewModel.ScreenshotVm;
 import com.gyf.barlibrary.ImmersionBar;
 
 import org.greenrobot.eventbus.EventBus;
@@ -109,9 +108,6 @@ public class GameDetailActivity
         });
     }
 
-    private void loadData() {
-        Glide.with(this).load(R.mipmap.default_screenshot).apply(RequestOptions.bitmapTransform(new BlurTransformation(25, 3))).into(binding.ivToolbar);
-    }
 
 
     protected void onDestroy() {
@@ -126,7 +122,7 @@ public class GameDetailActivity
     public void onMessageEvent(BusAction.HideCommentRecyclerViewEvent event) {
 
         final ValueAnimator animator = ValueAnimator.ofFloat(event.startPositionX, getResources().getDisplayMetrics().heightPixels);
-        animator.setDuration(300);
+        animator.setDuration(400);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -193,6 +189,10 @@ public class GameDetailActivity
 
         screenshotsAdapter.setItems(gameDetailVm.screenshotVm.screenshots);
         screenshotsAdapter.notifyDataSetChanged();
+        binding.setGameDetailVm(mGameDetailVm);
+
+        Glide.with(this).load(R.mipmap.default_screenshot).apply(RequestOptions.bitmapTransform(new BlurTransformation(25, 3))).into(binding.ivToolbar);
+
 
     }
 }
