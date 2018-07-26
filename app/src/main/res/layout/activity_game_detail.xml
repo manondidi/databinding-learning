@@ -7,7 +7,7 @@
 
         <variable
             name="gameDetailVm"
-            type="com.czq.mvvm.model.GameDetailVm" />
+            type="com.czq.mvvm.viewModel.GameDetailVm" />
     </data>
 
     <RelativeLayout
@@ -24,7 +24,7 @@
             <include
                 android:id="@+id/subViewGameInfo"
                 layout="@layout/sub_layout_game_info"
-                bind:gameInfo="@{gameDetailVm.gameInfo}"
+                bind:gameInfo="@{gameDetailVm.gameInfoVm}"
 
                 />
         </ScrollView>
@@ -77,7 +77,7 @@
                     android:layout_centerHorizontal="true"
                     android:gravity="center"
                     android:layout_marginTop="10dp"
-                    android:text="@{gameDetailVm.gameInfo.title}"
+                    android:text="@{gameDetailVm.gameInfoVm.title}"
                     android:textColor="#ffffff"
                     android:textSize="16dp" />
             </RelativeLayout>

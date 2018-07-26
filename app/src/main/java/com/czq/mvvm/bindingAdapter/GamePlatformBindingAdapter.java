@@ -1,14 +1,17 @@
-package com.czq.mvvm;
+package com.czq.mvvm.bindingAdapter;
 
 import android.databinding.BindingAdapter;
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
+import com.czq.mvvm.R;
 import com.czq.mvvm.util.DenyUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GamePlatformBindingAdapter {

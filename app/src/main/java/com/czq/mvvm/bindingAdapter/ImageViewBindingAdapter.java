@@ -1,4 +1,4 @@
-package com.czq.mvvm;
+package com.czq.mvvm.bindingAdapter;
 
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;

@@ -1,6 +1,6 @@
 package com.czq.mvvm;
 
-import com.czq.mvvm.model.GameDetailVm;
+import com.czq.mvvm.viewModel.GameDetailVm;
 
 public interface GameDetailContact {
     interface IGameDetailView{

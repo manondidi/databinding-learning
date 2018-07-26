@@ -2,7 +2,8 @@ package com.czq.mvvm;
 
 import com.czq.mvvm.converter.CommentConverter;
 import com.czq.mvvm.converter.EntryItemVmConverter;
-import com.czq.mvvm.model.GameDetailVm;
+import com.czq.mvvm.converter.GameInfoConverter;
+import com.czq.mvvm.viewModel.GameDetailVm;
 import com.czq.mvvm.viewModel.EmptyTransparentItemVm;
 import com.czq.mvvm.viewModel.PlayStatusItemVm;
 import com.czq.mvvm.viewModel.RecordTotalItemVm;
@@ -47,7 +48,7 @@ public class GameDetailPresenter implements GameDetailContact.IGameDetailPresent
                     gameDetailVm.datasource.add(new RecordTotalItemVm(comments.size()));
                     gameDetailVm.datasource.addAll(CommentConverter.convertCommentItemVmList(comments));
 
-                    gameDetailVm.gameInfo = gameInfo;
+                    gameDetailVm.gameInfoVm = GameInfoConverter.converGameInfo(gameInfo);
                     gameDetailVm.screenshotVm = new ScreenshotVm(screenshots);
                     return gameDetailVm;
 

@@ -22,7 +22,7 @@ import com.czq.mvvm.ItemBinder.PlayStatusItemBinder;
 import com.czq.mvvm.ItemBinder.RecordTotalItemBinder;
 import com.czq.mvvm.ItemBinder.ScreenshotBinder;
 import com.czq.mvvm.busEvent.BusAction;
-import com.czq.mvvm.model.GameDetailVm;
+import com.czq.mvvm.viewModel.GameDetailVm;
 import com.czq.mvvm.model.Screenshot;
 import com.czq.mvvm.util.DenyUtil;
 import com.czq.mvvm.viewModel.CommentItemVm;
