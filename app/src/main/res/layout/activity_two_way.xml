@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.czq.mvvm.enums.PlayStatusEnum" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.czq.mvvm.viewModel.TwoWayFormViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            app:contentInsetStart="0dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#5c51cb">
+
+                <ImageView
+                    android:id="@+id/ivBack"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
+                    android:layout_centerVertical="true"
+                    android:scaleType="center"
+                    android:src="@mipmap/nav_back" />
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="更新印象"
+                    android:textColor="#ffffff"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tvSubmit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="发表"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp" />
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="15dp">
+
+                    <include
+                        android:id="@+id/subLayoutPlayStatus"
+                        layout="@layout/sub_layout_play_status"
+                        bind:viewModel="@{viewModel.playStatus}" />
+                </FrameLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#f3f3f3" />
+
+                <RelativeLayout
+                    android:id="@+id/deservePlatformContain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{viewModel.playStatus.playStatus.equals(PlayStatusEnum.PLAYING)||viewModel.playStatus.playStatus.equals(PlayStatusEnum.PLAYED)?View.VISIBLE:View.GONE}">
+
+                    <TextView
+                        android:id="@+id/tvDeserve"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="12dp"
+
+                        android:layout_marginTop="15dp"
+
+                        android:gravity="center"
+                        android:text="游戏评价:"
+                        android:textColor="#666666"
+                        android:textSize="14dp" />
+
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/tvDeserve"
+                        android:layout_alignTop="@id/tvDeserve"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/tvDeserve"
+                        android:orientation="horizontal"
+                        app:deserveRaido="@={viewModel.deserve}">
+
+                        <RadioButton
+                            android:id="@+id/radioDeserve"
+                            style="@style/btn_platform_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="4dp"
+                            android:button="@null"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:text="值得玩" />
+
+                        <RadioButton
+                            android:id="@+id/radioUndeserve"
+                            style="@style/btn_platform_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:button="@null"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:text="不值得" />
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/tvPlatform"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_below="@id/tvDeserve"
+                        android:layout_marginLeft="12dp"
+
+                        android:layout_marginTop="15dp"
+                        android:gravity="center"
+                        android:text="游戏平台:"
+                        android:textColor="#666666"
+                        android:textSize="14dp" />
+
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:id="@+id/platformContain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/tvPlatform"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@id/tvPlatform"
+                        app:alignContent="flex_start"
+                        app:alignItems="center"
+                        app:checkedPlatform="@={viewModel.playPlayformSet}"
+                        app:fillIntoPlatform="@{viewModel.platformList}"
+                        app:flexDirection="row"
+                        app:flexWrap="wrap"
+                        app:justifyContent="flex_start">
+
+                        <CheckBox
+                            style="@style/btn_platform_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginRight="4dp"
+                            android:button="@null"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:text="NS" />
+
+                        <CheckBox
+                            style="@style/btn_platform_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginRight="4dp"
+                            android:button="@null"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:text="wiiu" />
+
+                        <CheckBox
+                            style="@style/btn_platform_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginRight="4dp"
+                            android:button="@null"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:text="psvita" />
+
+                        <CheckBox
+                            style="@style/btn_platform_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginRight="4dp"
+                            android:button="@null"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:text="xbox360" />
+
+                        <CheckBox
+                            style="@style/btn_platform_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginRight="4dp"
+                            android:button="@null"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:text="xboxone" />
+
+                        <CheckBox
+                            style="@style/btn_platform_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginRight="4dp"
+                            android:button="@null"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:text="ps4" />
+
+                    </com.google.android.flexbox.FlexboxLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/platformContain"
+                        android:layout_marginTop="20dp"
+                        android:background="#f3f3f3" />
+                </RelativeLayout>
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:gravity="top|left"
+                    android:hint="有什么不开始的事,说出来让大家开心一下"
+                    android:minHeight="300dp"
+                    android:paddingBottom="12dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:paddingTop="12dp"
+                    android:text="@={viewModel.content}"
+                    android:textColor="#3c3c3c"
+                    android:textSize="14dp" />
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="12dp"
+            android:background="@drawable/bg_tv_game_name"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/edit_game" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="塞尔达传说"
+                android:textColor="#3c3c3c"
+                android:textSize="10dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

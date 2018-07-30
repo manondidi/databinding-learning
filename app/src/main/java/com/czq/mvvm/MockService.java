@@ -24,21 +24,18 @@ public class MockService {
 
     public Observable<List<Screenshot>> getScreenshotList(String gameId) {
         return Observable.just("screenshot.json")
-                .delay(1, TimeUnit.SECONDS)
                 .map(file -> AssetUtil.getStringFromFile(mContext, file))
                 .map(data -> JSON.parseArray(data, Screenshot.class));
     }
 
     public Observable<GameInfo> getGameInfo(String gameId) {
         return Observable.just("gameInfo.json")
-                .delay(1, TimeUnit.SECONDS)
                 .map(file -> AssetUtil.getStringFromFile(mContext, file))
                 .map(data -> JSON.parseObject(data, GameInfo.class));
     }
 
     public Observable<List<Comment>> getCommentList(String gameId) {
         return Observable.just("comment.json")
-                .delay(1, TimeUnit.SECONDS)
                 .map(file -> AssetUtil.getStringFromFile(mContext, file))
                 .map(data -> JSON.parseArray(data, Comment.class));
     }
@@ -46,7 +43,6 @@ public class MockService {
 
     public Observable<GameCard> getGameCard(String gameId) {
         return Observable.just("gameCard.json")
-                .delay(1, TimeUnit.SECONDS)
                 .map(file -> AssetUtil.getStringFromFile(mContext, file))
                 .map(data -> JSON.parseObject(data, GameCard.class));
     }

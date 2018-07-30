@@ -2,6 +2,7 @@ package com.czq.mvvm;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.animation.DynamicAnimation;
@@ -16,20 +17,24 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.czq.mvvm.ItemBinder.CommentItemBinder;
 import com.czq.mvvm.ItemBinder.EmptyTransparentItemBinder;
-import com.czq.mvvm.databinding.ActivityGameDetailBinding;
 import com.czq.mvvm.ItemBinder.EntryItemBinder;
 import com.czq.mvvm.ItemBinder.PlayStatusItemBinder;
 import com.czq.mvvm.ItemBinder.RecordTotalItemBinder;
 import com.czq.mvvm.ItemBinder.ScreenshotBinder;
 import com.czq.mvvm.busEvent.BusAction;
-import com.czq.mvvm.viewModel.GameDetailVm;
+import com.czq.mvvm.converter.GameDetailConverter;
+import com.czq.mvvm.converter.GameInfoConverter;
+import com.czq.mvvm.databinding.ActivityGameDetailBinding;
+import com.czq.mvvm.model.GameInfo;
 import com.czq.mvvm.model.Screenshot;
 import com.czq.mvvm.util.DenyUtil;
 import com.czq.mvvm.viewModel.CommentItemVm;
 import com.czq.mvvm.viewModel.EmptyTransparentItemVm;
 import com.czq.mvvm.viewModel.EntryItemVm;
+import com.czq.mvvm.viewModel.GameDetailVm;
 import com.czq.mvvm.viewModel.PlayStatusItemVm;
 import com.czq.mvvm.viewModel.RecordTotalItemVm;
+import com.czq.mvvm.viewModel.TwoWayResultVm;
 import com.gyf.barlibrary.ImmersionBar;
 
 import org.greenrobot.eventbus.EventBus;
@@ -56,6 +61,7 @@ public class GameDetailActivity
     private MultiTypeAdapter screenshotsAdapter = new MultiTypeAdapter();
     private GameDetailVm mGameDetailVm;
     private GameDetailPresenter mPresenter;
+    private GameInfo mGameInfo;
 
 
     protected void onCreate(Bundle paramBundle) {
@@ -106,8 +112,8 @@ public class GameDetailActivity
                 }
             }
         });
-    }
 
+    }
 
 
     protected void onDestroy() {
@@ -115,6 +121,25 @@ public class GameDetailActivity
         mPresenter = null;
         if (mImmersionBar != null) {
             mImmersionBar.destroy();
+        }
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(BusAction.GameDetailStatusClickEvent event) {
+        Intent i = new Intent(this, TwoWayActivity.class);
+        i.putExtra("gameInfo", mGameInfo);
+        startActivityForResult(i, 1234);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 1234) {
+            TwoWayResultVm twoWayResultVm = (TwoWayResultVm) data.getSerializableExtra("twoWayResultVm");
+            setGameInfo(GameInfoConverter.converTwoWayGameInfo(twoWayResultVm, mGameInfo));
+            GameDetailVm gameDetailVm = GameDetailConverter.converGameDetailVm(mGameInfo, twoWayResultVm, mGameDetailVm);
+            setGameDetailVm(gameDetailVm);
         }
     }
 
@@ -194,5 +219,10 @@ public class GameDetailActivity
         Glide.with(this).load(R.mipmap.default_screenshot).apply(RequestOptions.bitmapTransform(new BlurTransformation(25, 3))).into(binding.ivToolbar);
 
 
+    }
+
+    @Override
+    public void setGameInfo(GameInfo gameInfo) {
+        mGameInfo = gameInfo;
     }
 }

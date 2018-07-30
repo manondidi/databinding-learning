@@ -4,6 +4,7 @@ import android.text.TextUtils;
 
 import com.czq.mvvm.model.GameInfo;
 import com.czq.mvvm.viewModel.GameInfoVm;
+import com.czq.mvvm.viewModel.TwoWayResultVm;
 
 public class GameInfoConverter {
     public static GameInfoVm converGameInfo(GameInfo gameInfo) {
@@ -18,8 +19,16 @@ public class GameInfoConverter {
         gameInfoVm.languages = TextUtils.join("、", gameInfo.languages);
         gameInfoVm.platforms = TextUtils.join("、", gameInfo.platforms);
         gameInfoVm.company = gameInfo.company;
-        gameInfoVm.platformList=gameInfo.platforms;
+        gameInfoVm.platformList = gameInfo.platforms;
         gameInfoVm.title = gameInfo.title;
         return gameInfoVm;
+    }
+
+    public static GameInfo converTwoWayGameInfo(TwoWayResultVm twoWayResultVm, GameInfo gameInfo) {
+        gameInfo.playStatus = twoWayResultVm.playStatus;
+        gameInfo.deserve = twoWayResultVm.deserve;
+        gameInfo.reviewContent = twoWayResultVm.content;
+        gameInfo.playPlatforms = twoWayResultVm.playingPlatformList;
+        return gameInfo;
     }
 }

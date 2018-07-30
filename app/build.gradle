@@ -27,7 +27,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.google.android:flexbox:1.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
@@ -39,7 +40,6 @@ dependencies {
     implementation 'com.github.florent37:arclayout:1.0.3'
 
     implementation 'jp.wasabeef:glide-transformations:3.3.0'
-    // If you want to use the GPU Filters
     implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
     implementation 'me.drakeet.multitype:multitype:3.4.4'
 
@@ -51,4 +51,5 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'io.reactivex.rxjava2:rxjava:2.x.x'
     implementation 'com.alibaba:fastjson:1.1.68.android'
+
 }

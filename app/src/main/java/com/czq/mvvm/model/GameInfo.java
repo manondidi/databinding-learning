@@ -1,8 +1,9 @@
 package com.czq.mvvm.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class GameInfo {
+public class GameInfo implements Serializable {
 
 
     /**
@@ -66,6 +67,7 @@ public class GameInfo {
     public boolean isFireflyGame;
     public boolean hasRecord;
     public int userCount;
+    public Integer deserve;
     public String playStatus;
     public String reviewContent;
     public int recordLikeCount;
@@ -73,5 +75,8 @@ public class GameInfo {
     public List<String> platforms;
     public List<String> languages;
     public List<String> features;
+
+
+    public List<String> playPlatforms;
 
 }

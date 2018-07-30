@@ -9,6 +9,7 @@
   "type": "动作角色扮演",
   "platforms": [
     "NS"
+    ,"wiiU"
   ],
   "release": "",
   "cover": "http://i1.17173cdn.com/9axtlo/YWxqaGBf/gamelib/20180121/XiNyCXbmelzpnEb.jpg",
@@ -3564,14 +3565,14 @@
   ],
   "playTimeRange": null,
   "playStatus": "played",
-  "deserve": null,
+  "deserve": 1,
   "startPlayingAt": null,
   "reviewContent": "塞尔达天下第一",
   "recordId": null,
   "recordCreateTime": null,
   "recordLikeCount": 0,
   "recordLikeStatus": "normal",
-  "playPlatforms": [],
+  "playPlatforms": ["NS"],
   "lv": null,
   "lvName": "unset"
 }

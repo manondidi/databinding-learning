@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.czq.mvvm.R;
@@ -30,7 +31,7 @@ public class PlayStatusItemBinder
     }
 
     static class ViewHolder
-            extends RecyclerView.ViewHolder {
+            extends RecyclerView.ViewHolder implements View.OnClickListener{
         ItemPlayStatusBinding binding;
 
         ViewHolder(ItemPlayStatusBinding b) {
@@ -39,6 +40,18 @@ public class PlayStatusItemBinder
             this.binding.ivDropDown.setOnClickListener(v -> {
                 EventBus.getDefault().post(new BusAction.HideCommentRecyclerViewEvent());
             });
+            binding.subLayoutPlayStatus.btnPlayed.setOnClickListener(this);
+            binding.subLayoutPlayStatus.btnPlaying.setOnClickListener(this);
+            binding.subLayoutPlayStatus.btnPlusOne.setOnClickListener(this);
+            binding.subLayoutPlayStatus.btnWish.setOnClickListener(this);
+            binding.tvContent.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            EventBus.getDefault().post(new BusAction.GameDetailStatusClickEvent());
+
         }
     }
 }

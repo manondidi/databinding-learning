@@ -19,6 +19,7 @@
         android:weightSum="4">
 
         <Button
+            android:id="@+id/btnWish"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="30dp"
@@ -26,10 +27,12 @@
             android:layout_weight="1"
             android:background="@drawable/bg_btn_play_status"
             android:text="想玩"
-            android:textColor="@drawable/tx_color_btn_play_status"
+            android:textColor="@color/tx_color_btn_play_status"
             app:selectPlayStatus="@{viewModel.playStatus.equals(PlayStatusEnum.WISH)}" />
 
         <Button
+
+            android:id="@+id/btnPlusOne"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="30dp"
@@ -37,10 +40,11 @@
             android:layout_weight="1"
             android:background="@drawable/bg_btn_play_status"
             android:text="喜+1"
-            android:textColor="@drawable/tx_color_btn_play_status"
+            android:textColor="@color/tx_color_btn_play_status"
             app:selectPlayStatus="@{viewModel.playStatus.equals(PlayStatusEnum.PLUS_ONE)}" />
 
         <Button
+            android:id="@+id/btnPlaying"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="30dp"
@@ -48,10 +52,11 @@
             android:layout_weight="1"
             android:background="@drawable/bg_btn_play_status"
             android:text="在玩"
-            android:textColor="@drawable/tx_color_btn_play_status"
+            android:textColor="@color/tx_color_btn_play_status"
             app:selectPlayStatus="@{viewModel.playStatus.equals(PlayStatusEnum.PLAYING)}" />
 
         <Button
+            android:id="@+id/btnPlayed"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="30dp"
@@ -59,7 +64,7 @@
             android:layout_weight="1"
             android:background="@drawable/bg_btn_play_status"
             android:text="玩过"
-            android:textColor="@drawable/tx_color_btn_play_status"
+            android:textColor="@color/tx_color_btn_play_status"
             app:selectPlayStatus="@{viewModel.playStatus.equals(PlayStatusEnum.PLAYED)}" />
     </LinearLayout>
 </layout>

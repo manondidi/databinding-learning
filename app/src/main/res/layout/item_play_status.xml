@@ -82,10 +82,12 @@
                 android:layout_marginRight="12dp"
                 android:layout_marginTop="18dp"
                 android:background="#f3f3f3"
+                android:textStyle="italic"
                 android:minHeight="60dp"
                 android:text="@{viewModel.content}"
                 android:paddingBottom="12dp"
                 android:paddingLeft="10dp"
+                android:id="@+id/tvContent"
                 android:paddingRight="10dp"
                 android:paddingTop="12dp" />
         </RelativeLayout>

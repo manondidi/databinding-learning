@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="btn_platform_check">
+        <item name="android:background">@drawable/bg_btn_platform_check</item>
+        <item name="android:textColor">@color/text_color_btn_platform_check</item>
+    </style>
 </resources>

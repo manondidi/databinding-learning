@@ -11,4 +11,7 @@ public class BusAction {
             this.startPositionX = paramFloat;
         }
     }
+
+    public static class GameDetailStatusClickEvent {
+    }
 }

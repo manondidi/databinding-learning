@@ -41,6 +41,9 @@ public class GameDetailPresenter implements GameDetailContact.IGameDetailPresent
                 mockService.getCommentList(gameId),
                 (gameCard, gameInfo, screenshots, comments) -> {
 
+
+                    mView.setGameInfo(gameInfo);
+
                     GameDetailVm gameDetailVm = new GameDetailVm();
                     gameDetailVm.datasource = new ArrayList();
                     gameDetailVm.datasource.add(new EmptyTransparentItemVm());
