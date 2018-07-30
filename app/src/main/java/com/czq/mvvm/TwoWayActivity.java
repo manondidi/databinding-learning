@@ -53,7 +53,6 @@ public class TwoWayActivity extends AppCompatActivity implements View.OnClickLis
                 twoWayResultVm.deserve = null;
             }
             twoWayResultVm.playingPlatformList = new ArrayList<>(mViewModel.getPlayPlayformSet());
-
             Intent i = new Intent();
             i.putExtra("twoWayResultVm", twoWayResultVm);
             setResult(1234, i);

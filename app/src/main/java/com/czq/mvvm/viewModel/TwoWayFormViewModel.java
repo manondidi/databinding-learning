@@ -29,7 +29,8 @@ public class TwoWayFormViewModel extends BaseObservable {
     private Integer deserve;//可以为null
     private List<String> platformList;
     private Set<String> playPlayformSet;//选中的
-    private static InverseBindingListener mInverseBindingListener;
+    private static InverseBindingListener mRadioInverseBindingListener;
+    private static InverseBindingListener mCheckboxInverseBindingListener;
 
     @Bindable
     public PlayStatusItemVm getPlayStatus() {
@@ -122,8 +123,8 @@ public class TwoWayFormViewModel extends BaseObservable {
     public static void childCheckboxChange(ViewGroup viewGroup, final InverseBindingListener inverseBindingListener) {
 
 
-        if (mInverseBindingListener == null) {
-            mInverseBindingListener = inverseBindingListener;
+        if (mCheckboxInverseBindingListener == null) {
+            mCheckboxInverseBindingListener = inverseBindingListener;
         }
         for (int i = 0; i < viewGroup.getChildCount(); i++) {
             CheckBox cb = (CheckBox) viewGroup.getChildAt(i);
@@ -152,7 +153,7 @@ public class TwoWayFormViewModel extends BaseObservable {
         } else if (R.id.radioUndeserve == radioGroup.getCheckedRadioButtonId()) {
             return 0;
         } else {
-            return null;
+            return 0;
         }
 
     }
@@ -160,8 +161,8 @@ public class TwoWayFormViewModel extends BaseObservable {
     @BindingAdapter(value = {"deserveRaidoChange"}, requireAll = false)
     public static void deserveRaidoChange(RadioGroup radioGroup, final InverseBindingListener inverseBindingListener) {
 
-        if (mInverseBindingListener == null) {
-            mInverseBindingListener = inverseBindingListener;
+        if (mRadioInverseBindingListener == null) {
+            mRadioInverseBindingListener = inverseBindingListener;
 
         }
         radioGroup.setOnCheckedChangeListener(mOnRadioCheckedChangeListener);
@@ -170,14 +171,14 @@ public class TwoWayFormViewModel extends BaseObservable {
     private static RadioGroup.OnCheckedChangeListener mOnRadioCheckedChangeListener = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
-            mInverseBindingListener.onChange();
+            mRadioInverseBindingListener.onChange();
         }
     };
     private static CompoundButton.OnCheckedChangeListener mOnCheckboxCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
 
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            mInverseBindingListener.onChange();
+            mCheckboxInverseBindingListener.onChange();
         }
     };
 }
