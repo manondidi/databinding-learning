@@ -28,6 +28,7 @@ import com.czq.mvvm.databinding.ActivityGameDetailBinding;
 import com.czq.mvvm.model.GameInfo;
 import com.czq.mvvm.model.Screenshot;
 import com.czq.mvvm.util.DenyUtil;
+import com.czq.mvvm.util.MotionMoveUtil;
 import com.czq.mvvm.viewModel.CommentItemVm;
 import com.czq.mvvm.viewModel.EmptyTransparentItemVm;
 import com.czq.mvvm.viewModel.EntryItemVm;
@@ -51,6 +52,8 @@ import me.everything.android.ui.overscroll.IOverScrollUpdateListener;
 import me.everything.android.ui.overscroll.VerticalOverScrollBounceEffectDecorator;
 import me.everything.android.ui.overscroll.adapters.RecyclerViewOverScrollDecorAdapter;
 
+import static me.everything.android.ui.overscroll.IOverScrollState.STATE_BOUNCE_BACK;
+
 public class GameDetailActivity
         extends AppCompatActivity implements GameDetailContact.IGameDetailView {
     private ActivityGameDetailBinding binding;
@@ -62,11 +65,13 @@ public class GameDetailActivity
     private GameDetailVm mGameDetailVm;
     private GameDetailPresenter mPresenter;
     private GameInfo mGameInfo;
+    private MotionMoveUtil mMotionMoveUtil;
 
 
     protected void onCreate(Bundle paramBundle) {
         super.onCreate(paramBundle);
         mPresenter = new GameDetailPresenter(this, new MockService(this));
+        mMotionMoveUtil = new MotionMoveUtil();
         binding = ((ActivityGameDetailBinding) DataBindingUtil.setContentView(this, R.layout.activity_game_detail));
         initView();
         mPresenter.start();
@@ -106,12 +111,13 @@ public class GameDetailActivity
             }
         });
         new VerticalOverScrollBounceEffectDecorator(new RecyclerViewOverScrollDecorAdapter(binding.rcComment)).setOverScrollUpdateListener(new IOverScrollUpdateListener() {
-            public void onOverScrollUpdate(IOverScrollDecor paramAnonymousIOverScrollDecor, int paramAnonymousInt, float paramAnonymousFloat) {
-                if ((paramAnonymousFloat > 200.0F) && (binding.rcComment.getVisibility() == View.VISIBLE)) {
-                    EventBus.getDefault().post(new BusAction.HideCommentRecyclerViewEvent(paramAnonymousFloat));
+            public void onOverScrollUpdate(IOverScrollDecor decor, int state, float offset) {
+                if (state == STATE_BOUNCE_BACK && (offset > 200.0F) && (binding.rcComment.getVisibility() == View.VISIBLE)) {
+                    EventBus.getDefault().post(new BusAction.HideCommentRecyclerViewEvent(offset));
                 }
             }
         });
+
 
     }
 
