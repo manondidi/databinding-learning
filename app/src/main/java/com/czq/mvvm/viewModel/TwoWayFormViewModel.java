@@ -101,13 +101,10 @@ public class TwoWayFormViewModel extends BaseObservable {
             cb.setOnCheckedChangeListener(mOnCheckboxCheckedChangeListener);
             viewGroup.addView(cb);
         }
-
-
     }
 
     @InverseBindingAdapter(attribute = "checkedPlatform", event = "childCheckboxChange")
     public static Set<String> inverseChildCheckboxChange(ViewGroup viewGroup) {
-
         Set<String> playingSet = new HashSet<>();
         for (int i = 0; i < viewGroup.getChildCount(); i++) {
             CheckBox cb = (CheckBox) viewGroup.getChildAt(i);
@@ -121,14 +118,11 @@ public class TwoWayFormViewModel extends BaseObservable {
 
     @BindingAdapter(value = {"childCheckboxChange"}, requireAll = false)
     public static void childCheckboxChange(ViewGroup viewGroup, final InverseBindingListener inverseBindingListener) {
-
         mCheckboxInverseBindingListener = inverseBindingListener;
         for (int i = 0; i < viewGroup.getChildCount(); i++) {
             CheckBox cb = (CheckBox) viewGroup.getChildAt(i);
             cb.setOnCheckedChangeListener(mOnCheckboxCheckedChangeListener);
         }
-
-
     }
 
     @BindingAdapter({"deserveRaido"})
@@ -168,7 +162,6 @@ public class TwoWayFormViewModel extends BaseObservable {
         }
     };
     private static CompoundButton.OnCheckedChangeListener mOnCheckboxCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
-
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             buttonView.setChecked(isChecked);

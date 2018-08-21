@@ -16,7 +16,6 @@ public class ImageViewBindingAdapter {
 
     @BindingAdapter({"imgUrl-corners", "corner"})
     public static void loadImageUrl(ImageView imageView, String url, int corners) {
-
         Glide.with(imageView.getContext()).load(url)
                 .apply(RequestOptions.bitmapTransform(new MultiTransformation(
                         new CenterCrop(),
@@ -36,7 +35,6 @@ public class ImageViewBindingAdapter {
 
     @BindingAdapter({"imgUrl"})
     public static void loadImageUrl(ImageView imageView, String url) {
-
         Glide.with(imageView.getContext()).load(url)
                 .apply(RequestOptions.bitmapTransform(new MultiTransformation(
                         new CenterCrop())))
